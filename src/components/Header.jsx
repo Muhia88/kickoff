@@ -1,6 +1,60 @@
 import { useState } from "react";
-import { Menu, ShoppingCart, User, Heart, Images } from "lucide-react";
-import kickoffLogo from "../../images/logo/kickoff_logo.jpeg"
+import { Menu, ShoppingCart, User, Heart } from "lucide-react";
+import kickoffLogo from "../../images/logo/kickoff_logo.jpeg";
+
+// 1. NEW COMPONENT: A self-contained dropdown for the mobile menu.
+// It manages its own open/closed state.
+const MobileLiquorStoreDropdown = ({ categories }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div>
+      {/* This button toggles the dropdown's visibility */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex justify-between items-center font-bold text-red-700 hover:text-red-800 text-base py-1"
+      >
+        <span>Liquor Store</span>
+        {/* Chevron icon that rotates based on the open state */}
+        <svg
+          className={`w-5 h-5 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </button>
+
+      {/* The collapsible content area, shown only when isOpen is true */}
+      {isOpen && (
+        <div className="pt-2 pl-4 space-y-3">
+          {categories.map((category) => (
+            <div key={category.name}>
+              {category.subcategories ? (
+                <>
+                  <h4 className="font-semibold text-gray-800 text-sm">{category.name}</h4>
+                  <div className="pl-3 mt-1 space-y-1">
+                    {category.subcategories.map((sub) => (
+                      <a key={sub.name} href={sub.href} className="block text-sm text-gray-600 hover:text-red-700 py-1">
+                        {sub.name}
+                      </a>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <a href={category.href} className="block font-semibold text-gray-800 text-sm hover:text-red-700">
+                  {category.name}
+                </a>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -80,7 +134,6 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex flex-1 justify-center items-center">
             <ul className="flex items-center space-x-6">
-              {/* Liquor Store Dropdown */}
               <li className="relative group">
                 <button className="text-gray-800 hover:text-red-700 px-3 py-2 text-sm font-medium flex items-center gap-1 transition-colors">
                   Liquor Store
@@ -105,8 +158,6 @@ const Header = () => {
                   ))}
                 </div>
               </li>
-              
-              {/* Other simple links */}
               {otherLinks.map(link => (
                  <li key={link.name}>
                     <a href={link.href} className="text-gray-800 hover:text-red-700 px-3 py-2 text-sm font-medium transition-colors">
@@ -132,34 +183,17 @@ const Header = () => {
         </div>
       </div>
       
-      {/* Mobile Menu Panel */}
+      {/* 2. MODIFIED Mobile Menu Panel */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-white border-t p-4 space-y-4">
+        <div className="lg:hidden bg-white border-t p-4">
           <div className="space-y-4">
-            {/* Liquor Store Dropdown */}
-            <div>
-              <h3 className="font-bold text-lg text-red-700 mb-2">Liquor Store</h3>
-              {liquorStoreCategories.map((cat) => (
-                <div key={cat.name} className="mb-2">
-                  <h4 className="font-semibold text-sm text-red-700">{cat.name}</h4>
-                  {cat.subcategories ? (
-                    <div className="pl-2 mt-1 space-y-1">
-                      {cat.subcategories.map(sub => (
-                        <a key={sub.name} href={sub.href} className="block text-gray-600 hover:text-red-700 text-xs py-1">{sub.name}</a>
-                      ))}
-                    </div>
-                  ) : (
-                    <a href={cat.href} className="block pl-2 mt-1 text-gray-600 hover:text-red-700 text-xs py-1">View All</a>
-                  )}
-                </div>
-              ))}
-            </div>
-            {/* Other Sections */}
-            <div className="border-t pt-4 mt-4 space-y-2">
-              {otherLinks.map(link => (
-                <a key={link.name} href={link.href} className="block font-semibold text-gray-800 hover:text-red-700 text-base py-1">{link.name}</a>
-              ))}
-            </div>
+            {/* Other links now appear first and are styled in red */}
+            {otherLinks.map(link => (
+              <a key={link.name} href={link.href} className="block font-bold text-red-700 hover:text-red-800 text-base py-1">{link.name}</a>
+            ))}
+            
+            {/* The new collapsible component is used here */}
+            <MobileLiquorStoreDropdown categories={liquorStoreCategories} />
           </div>
         </div>
       )}
