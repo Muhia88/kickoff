@@ -135,25 +135,32 @@ const Header = () => {
       {/* Mobile Menu Panel */}
       {isMenuOpen && (
         <div className="lg:hidden bg-white border-t p-4 space-y-4">
-            {liquorStoreCategories.map((cat) => (
-                <div key={cat.name}>
-                    <h3 className="font-semibold text-red-700">{cat.name}</h3>
-                    {cat.subcategories ? (
-                        <div className="pl-2 mt-1 space-y-1">
-                            {cat.subcategories.map(sub => (
-                                <a key={sub.name} href={sub.href} className="block text-gray-600 hover:text-red-700">{sub.name}</a>
-                            ))}
-                        </div>
-                    ) : (
-                        <a href={cat.href} className="block pl-2 mt-1 text-gray-600 hover:text-red-700">View All</a>
-                    )}
+          <div className="space-y-4">
+            {/* Liquor Store Dropdown */}
+            <div>
+              <h3 className="font-bold text-lg text-red-700 mb-2">Liquor Store</h3>
+              {liquorStoreCategories.map((cat) => (
+                <div key={cat.name} className="mb-2">
+                  <h4 className="font-semibold text-sm text-red-700">{cat.name}</h4>
+                  {cat.subcategories ? (
+                    <div className="pl-2 mt-1 space-y-1">
+                      {cat.subcategories.map(sub => (
+                        <a key={sub.name} href={sub.href} className="block text-gray-600 hover:text-red-700 text-xs py-1">{sub.name}</a>
+                      ))}
+                    </div>
+                  ) : (
+                    <a href={cat.href} className="block pl-2 mt-1 text-gray-600 hover:text-red-700 text-xs py-1">View All</a>
+                  )}
                 </div>
-            ))}
-            <div className="border-t pt-4 mt-4 space-y-2">
-                {otherLinks.map(link => (
-                    <a key={link.name} href={link.href} className="block font-semibold text-gray-800 hover:text-red-700">{link.name}</a>
-                ))}
+              ))}
             </div>
+            {/* Other Sections */}
+            <div className="border-t pt-4 mt-4 space-y-2">
+              {otherLinks.map(link => (
+                <a key={link.name} href={link.href} className="block font-semibold text-gray-800 hover:text-red-700 text-base py-1">{link.name}</a>
+              ))}
+            </div>
+          </div>
         </div>
       )}
     </header>
