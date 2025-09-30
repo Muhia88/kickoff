@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Menu, ShoppingCart, User, Heart } from "lucide-react";
-import kickoffLogo from "../../images/logo/kickoff_logo.jpeg";
+import kickoffLogo from "../../../images/logo/kickoff_logo.jpeg";
 
 // 1. NEW COMPONENT: A self-contained dropdown for the mobile menu.
 // It manages its own open/closed state.
