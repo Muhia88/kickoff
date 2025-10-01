@@ -2,7 +2,7 @@ import heroBackgroundImage from '../assets/background_alcohol.jpg';
 
 const Hero = () => {
   const categories = [
-    { name: 'TOP SELLING', href: '/top-selling' },
+    { name: 'POPULAR', href: '#featured-items' },
     { name: 'BRANDS', href: '/brands' },
   ];
 
@@ -37,8 +37,8 @@ const Hero = () => {
             <a
               key={category.name}
               href={category.href}
-              /* -- THE CHANGE IS HERE -- */
-              className="bg-black text-white px-6 py-3 text-sm font-medium uppercase tracking-wider hover:bg-gray-800 transition-colors duration-300"
+              className="bg-black text-white px-6 py-3 text-sm font-medium uppercase tracking-wider hover:bg-gray-800 transition-colors duration-300 border border-white rounded-full"
+              style={{ scrollBehavior: 'smooth' }}
             >
               {category.name}
             </a>

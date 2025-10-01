@@ -1,14 +1,16 @@
+import { Link } from 'react-router-dom';
+
 const ProductCategories = () => {
   const categories = [
     {
       name: 'WHISKY',
-      image: '/whiskey/matrell.png',
+      image: '/whiskey/jack_daniels.png',
       href: '/whisky'
     },
     {
-      name: 'RUM',
-      image: '/rum/bacardi_black_carta_negra.png',
-      href: '/rum'
+      name: 'GIN',
+      image: '/gin/Gilbeys_london.png',
+      href: '/gin'
     },
     {
       name: 'BEER',
@@ -16,18 +18,18 @@ const ProductCategories = () => {
       href: '/beer'
     },
     {
-      name: 'TEQUILA',
-      image: '/tequila/don_julio_anejo.png',
-      href: '/tequila'
+      name: 'VODKA',
+      image: '/vodka/smirnoff_vodka.png',
+      href: '/vodka'
     },
     {
       name: 'COGNAC',
-      image: '/cognac/hennessy_xo.png',
+      image: '/cognac/martell.png',
       href: '/cognac'
     },
     {
       name: 'WINE',
-      image: '/wine/harveys_bristol_cream.png',
+      image: '/wine/4th_Street_Red.png',
       href: '/wine'
     }
   ];
@@ -37,9 +39,9 @@ const ProductCategories = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {categories.map((category) => (
-            <a
+            <Link
               key={category.name}
-              href={category.href}
+              to={`/category/${category.name.toLowerCase()}`}
               className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
               <div className="aspect-square">
@@ -60,7 +62,7 @@ const ProductCategories = () => {
                   </div>
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

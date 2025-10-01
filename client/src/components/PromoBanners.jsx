@@ -1,25 +1,25 @@
 const PromoBanners = () => {
   const banners = [
     {
-      title: 'CLEARANCE',
-      subtitle: 'UP TO 50% OFF',
-      image: 'https://ext.same-assets.com/4095877370/1645971327.jpeg',
-      bgColor: 'from-amber-400 to-orange-500',
-      href: '/clearance'
+      title: 'EVENTS',
+      subtitle: 'BOOK NOW!',
+      image: '/events3.jpeg',
+      bgColor: 'gray-100',
+      href: '/events'
     },
     {
-      title: 'TOP BRANDS',
+      title: 'MERCHANDISE',
       subtitle: 'SHOP NOW!',
-      image: 'https://ext.same-assets.com/4095877370/2986042093.jpeg',
+      image: '/merchandise.jpg',
       bgColor: 'from-gray-800 to-gray-900',
-      href: '/barrel-picks'
+      href: '/merchandise'
     },
     {
-      title: 'TOP TRENDING',
-      subtitle: 'BOTTLES',
-      image: 'https://ext.same-assets.com/4095877370/3048299231.jpeg',
-      bgColor: 'from-liquor-brown to-amber-800',
-      href: '/top-selling'
+      title: '',
+      subtitle: '',
+      image: '/VIP2.jpg',
+      bgColor: 'gray-900',
+      href: '/vip'
     }
   ];
 
