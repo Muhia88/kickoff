@@ -4,7 +4,7 @@ import { Heart } from 'lucide-react';
 import ProductCard from '../../components/ProductCard';
 import { UseCart } from '../../contexts/CartContext';
 import { useWishlist } from '../../contexts/useWishlist';
-import fallbackImg from '../../assets/react.svg';
+import fallbackImg from '/caribia-gin-250ml.png';
 
 const formatToKES = (price) => {
   if (price === null || price === undefined || price === '') return '';

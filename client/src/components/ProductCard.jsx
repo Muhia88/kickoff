@@ -3,7 +3,7 @@ import { Heart, Star } from 'lucide-react';
 import { UseCart } from '../contexts/CartContext';
 import { useWishlist } from '../contexts/useWishlist';
 import { Link, useNavigate } from 'react-router-dom';
-import fallbackImg from '../assets/react.svg';
+import fallbackImg from '/caribia-gin-250ml.png';
 
 const formatToKES = (price) => {
   if (price === null || price === undefined || price === '') return '';

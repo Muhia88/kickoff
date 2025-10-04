@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Menu, ShoppingCart, Heart, X } from "lucide-react";
 import { UseCart } from '../contexts/CartContext';
 import { UserMenu } from './UserMenu';
-import kickoffLogo from "../../../images/logo/kickoff_logo.jpeg";
+import kickoffLogo from "/logo/kickoff_logo.jpeg";
 
 // 1. NEW COMPONENT: A self-contained dropdown for the mobile menu.
 // It manages its own open/closed state.
